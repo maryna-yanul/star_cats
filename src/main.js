@@ -3,13 +3,13 @@ import VueRouter from 'vue-router'
 
 import App from './App.vue'
 import Demo1 from './Demo1.vue'
-import Demo2 from './Demo2.vue'
+import SplashScreen from './SplashScreen.vue'
 Vue.use(VueRouter)
 
 const routes = [
   { path: '/', component: App },
   { path: '/demo1', component: Demo1 },
-  { path: '/demo2', component: Demo2 }
+  { path: '/splash-screen', component: SplashScreen }
 ]
 
 const router = new VueRouter({
