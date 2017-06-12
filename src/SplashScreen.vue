@@ -1,6 +1,5 @@
 <template>
   <div class="splash-screen">
-    <!-- Demo 2 {{msg}} -->
     <div class="bg-icons" />
     <h1 class="title">Star Cats</h1>
   </div>
