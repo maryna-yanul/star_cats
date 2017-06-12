@@ -5,6 +5,7 @@
     <router-link to="/splash-screen">Go to Splash Screen</router-link>
     <router-link to="/choose-planet">Go to Choose the Planet</router-link>
     <router-link to="/login">Go to Login</router-link>
+    <router-link to="/cat">Go to Cat-page</router-link>
   </div>
 </template>
 

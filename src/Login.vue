@@ -26,7 +26,7 @@
       >
     </form>
     <div class="next-btn">
-      <button type="button" name="button">Next -> </button>
+      <div class="button" type="button" name="button">Next -> </div>
     </div>
   </div>
 </template>
@@ -103,7 +103,7 @@
       text-align: center;
       padding: 30px;
       background-color: #550e5e;
-      button {
+      .button {
         font-size: 70px;
         color: #fff;
       }

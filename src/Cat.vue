@@ -1,15 +1,15 @@
 <template>
-  <div class="choose-planet">
-    <h1 class="title">Choose the Planet</h1>
-    <img src="/src/assets/planets.svg" alt="planets" />
+  <div class="cat">
+    <h1 class="title">Congratulations, you're a <span class="cat-name">SOMENAME</span></h1>
+    <img src="/src/assets/logo.png" alt="cat">
     <div class="next-btn">
-      <div class="button" type="button" name="button">Next -> </div>
+      <div class="button" type="button" name="button">Start planet chat -> </div>
     </div>
   </div>
 </template>
 
 <style lang="scss">
-  .choose-planet {
+  .cat {
     background-color: #192A49;
     position: absolute;
     top: 0;
@@ -20,13 +20,18 @@
       color: #fff;
       text-align: center;
       margin-top: 100px;
+      padding: 0 10px;
+    }
+    .cat-name {
+      color: #d41eec;
     }
 
     img {
-      width: 80%;
       margin: 0 auto;
       display: block;
-      height: 68%;
+      width: auto;
+      padding: 15px;
+      height: 45%;
     }
 
     .next-btn {

@@ -6,6 +6,7 @@ import Demo1 from './Demo1.vue'
 import SplashScreen from './SplashScreen.vue'
 import ChoosePlanet from './ChoosePlanet.vue'
 import Login from './Login.vue'
+import Cat from './Cat.vue'
 Vue.use(VueRouter)
 
 const routes = [
@@ -14,7 +15,7 @@ const routes = [
   { path: '/splash-screen', component: SplashScreen },
   { path: '/choose-planet', component: ChoosePlanet },
   { path: '/login', component: Login },
-
+  { path: '/cat', component: Cat },
 ]
 
 const router = new VueRouter({
