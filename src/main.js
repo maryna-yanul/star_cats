@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
+import { firebase } from './firebase'
 
 import App from './App.vue'
 import Demo1 from './Demo1.vue'
@@ -19,6 +20,7 @@ const routes = [
 ]
 
 const router = new VueRouter({
+  mode: 'history',
   routes // short for routes: routes
 })
 

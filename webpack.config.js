@@ -51,7 +51,12 @@ module.exports = {
   performance: {
     hints: false
   },
-  devtool: '#eval-source-map'
+  devtool: '#eval-source-map',
+  plugins: [
+    new webpack.DefinePlugin({
+      'process.env.firebaseApiKey': JSON.stringify(process.env.firebaseApiKey),
+    }),
+  ]
 }
 
 if (process.env.NODE_ENV === 'production') {
@@ -59,9 +64,8 @@ if (process.env.NODE_ENV === 'production') {
   // http://vue-loader.vuejs.org/en/workflow/production.html
   module.exports.plugins = (module.exports.plugins || []).concat([
     new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
+      'process.env.NODE_ENV': '"production"',
+      'process.env.firebaseApiKey': JSON.stringify(process.env.firebaseApiKey),
     }),
     new webpack.optimize.UglifyJsPlugin({
       sourceMap: true,
