@@ -22,10 +22,10 @@
         placeholder="Password"
       >
       <div v-if="this.registration" class="next-btn" v-on:click="handleSignUp()">
-        <div class="button" type="button" name="button">Next -> </div>
+        <div class="button" type="button" name="button">Sign Up</div>
       </div>
       <div v-else class="next-btn" v-on:click="toggleSignIn()">
-        <div class="button" type="button" name="button">Next -> </div>
+        <div class="button" type="button" name="button">Log In</div>
       </div>
     </form>
       <div class="choose-auth-form">
