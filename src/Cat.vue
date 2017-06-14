@@ -55,6 +55,7 @@
       height: 45%;
       &.Pluto {
         height: 10%;
+        margin-top: 30%;
       }
     }
 

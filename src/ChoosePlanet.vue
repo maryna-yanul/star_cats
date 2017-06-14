@@ -103,22 +103,35 @@
 </template>
 
 <script>
-export default {
-  name: 'ChoosePlanet',
-  data () {
-    return {
+  import firebase from 'firebase/app';
+  import 'firebase/auth';
 
-    }
-  },
-  methods: {
-    clickPlanet(name) {
-      this.$router.push({ path: `/cat/${name}`, params: { planetName: name } });
+  export default {
+    name: 'ChoosePlanet',
+    data () {
+      return {
+
+      }
     },
-    clickOnSun() {
-      this.$router.push({ path: `/sun` });
+    methods: {
+      writeUserData(userId, planet) {
+      firebase.database().ref('users/' + userId).set({
+        planet
+      });
+    },
+      clickPlanet(name) {
+        const user = firebase.auth().currentUser;
+        console.log(firebase)
+        if (user != null) {
+          this.writeUserData(firebase.auth().currentUser.uid, name);
+        };
+        this.$router.push({ path: `/cat/${name}`, params: { planetName: name } });
+      },
+      clickOnSun() {
+        this.$router.push({ path: `/sun` });
+      }
     }
   }
-}
 </script>
 
 <style lang="scss">

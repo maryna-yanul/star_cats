@@ -2,10 +2,10 @@
   <div class="login">
     <h1 class="title" v-if="this.registration">{{textRegistration}}</h1>
     <h1 class="title" v-else>{{textLogin}}</h1>
-    <div class="soc-icons">
+    <!-- <div class="soc-icons">
       <span class="facebook" v-on:click="facebookAuth()" />
       <span class="google" v-on:click="userSignOut()" />
-    </div>
+    </div> -->
     <form class="login-form">
       <input
         id="email"
@@ -173,7 +173,7 @@
     .title {
       color: #fff;
       text-align: center;
-      margin-top: 100px;
+      margin-top: 25%;
       text-transform: capitalize;
     }
     .choose-auth-form {
