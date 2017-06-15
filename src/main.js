@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import { firebase } from './firebase'
 import 'firebase/auth';
+import VueFire from 'vuefire'
 
 import App from './App.vue'
 import Demo1 from './Demo1.vue'
@@ -14,6 +15,7 @@ import Chat from './Chat.vue'
 import DogsPlanet from './DogsPlanet.vue'
 
 Vue.use(VueRouter)
+Vue.use(VueFire)
 
 const routes = [
   { path: '/', component: App },

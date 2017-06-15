@@ -1,46 +1,82 @@
 <template>
   <div class="chat">
     <h1 class="title">{{name}}</h1>
-    <div class="message-container">
+    <div class="message-container" id="scroll">
       <div class="message-list">
         <ul class="messages">
-          <li>
-            <div class="message cats">
-              <span>Maryna <small>09:00</small></span>
-              <p>dbfsbdfdjfbdksbfdsjbfk</p>
+          <li v-for="message in messages">
+            <div class="message current-user" v-if="currentUserId === message.userId">
+              <span><small>{{formatDate(message.date)}}</small></span>
+              <p>{{message.text}}</p>
             </div>
-          </li>
-          <li>
-            <div class="message current-user">
-              <span>Maryna <small>09:00</small></span>
-              <p>dbfsbdfdjfbdksbfdsjbfk</p>
-            </div>
-          </li>
-          <li>
-            <div class="message current-user">
-              <span>Maryna <small>09:00</small></span>
-              <p>dbfsbdfdjfbdksbfdsjbfk</p>
+
+            <div class="message cats" v-else>
+              <span><small>{{message.date}}</small></span>
+              <p>{{message.text}}</p>
             </div>
           </li>
         </ul>
       </div>
     </div>
-    <form class="message-types">
-      <div class="">
-        <textarea class="message-input" type="text" id="msgIpt" placeholder="Message" value="" autofocus />
+    <form class="message-types" v-on:submit.prevent="addMessage" ref="form">
+      <div>
+        <textarea
+          ref="msgIpt"
+          class="message-input"
+          type="text"
+          id="msgIpt"
+          placeholder="Message"
+          autofocus
+        />
       </div>
-      <button type="button" name="submit">Submit</button>
+      <button type="submit" name="submit">Submit</button>
     </form>
   </div>
 </template>
 
 <script>
+  import firebase from 'firebase/app';
+  import 'firebase/auth';
+  import moment from 'moment';
+
   export default {
     name: 'Cat',
-    data () {
+    updated() {
+      // console.log(document.getElementById('scroll').scrollTop);
+    },
+    firebase() {
+      const planetName = this.$route.params.planet || '';
+      return {
+        messages: firebase.database().ref().child('messages').orderByChild('planetName').equalTo(planetName),
+      }
+    },
+    data() {
       const planetName = this.$route.params.planet || '';
       return {
         name:  planetName,
+        currentUserId: firebase.auth().currentUser.uid,
+      }
+    },
+    methods: {
+      formatDate(date) {
+        return moment(date).fromNow();
+      },
+      addMessage() {
+        const { uid: userId } = firebase.auth().currentUser || {};
+        const { value: text } = this.$refs.msgIpt;
+        const { name: planetName } = this.$data;
+        const date = new Date();
+        const { key: messageId } = firebase.database().ref().child('messages').push();
+
+        firebase.database().ref().update({
+          [`/messages/${messageId}`]: {
+            userId,
+            text,
+            planetName,
+            date
+          }
+        });
+        this.$refs.form.reset();
       }
     }
   }
@@ -61,7 +97,12 @@
       right: 0;
     }
     .message-container {
-      padding: 220px 50px;
+      position: fixed;
+      overflow-y: scroll;
+      z-index: 1;
+      height: 64vh !important;
+      margin-top: 200px;
+      padding: 0 50px;
       flex: 1;
       display: flex;
       height: 100%;

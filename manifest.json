@@ -18,7 +18,7 @@
       "sizes": "192x192"
     }
   ],
-  "start_url": "/splash-screen",
+  "start_url": "/choose-planet",
   "orientation": "landscape",
   "display": "fullscreen"
 }
