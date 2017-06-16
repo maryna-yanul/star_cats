@@ -100,7 +100,8 @@
       position: fixed;
       overflow-y: scroll;
       z-index: 1;
-      height: 64vh !important;
+      height: 60% !important;
+      margin-bottom: 300px;
       margin-top: 200px;
       padding: 0 50px;
       flex: 1;
@@ -167,6 +168,7 @@
       bottom: 0;
       left: 0;
       right: 0;
+      z-index: 90;
 
       .message-input {
         width: 100%;
@@ -176,6 +178,7 @@
       button {
         font-size: 50px;
         width: 100%;
+        z-index: 90;
       }
     }
   }
